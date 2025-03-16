@@ -1,12 +1,12 @@
 {
 	"name": "HSC Task 2",
-	// "image": "python:3.13", // backup for when below doesn't work.
-	"image": "python:latest", // should use the latest stable version
+	"image": "python:3.12", // backup for when below doesn't work.
+	// "image": "python:latest", // should use the latest stable version
 	"hostRequirements": {
 		"cpus": 4
 	},
 	"waitFor": "onCreateCommand",
-	"updateContentCommand": "pip install --upgrade pip && pip install -r requirements.txt", // ensure that packages are installed
+	"updateContentCommand": "pip install --upgrade pip && pip install -r requirements.txt --upgrade", // ensure that packages are installed
 	"postCreateCommand": "apt-get update && apt-get install -y python3 python3-pip",
 	"postAttachCommand": {},
 	"portsAttributes": {
@@ -29,7 +29,7 @@
 				"[python]": {
 					"editor.defaultFormatter": "ms-python.black-formatter"
 				},
-				"editor.fontSize": 16,
+				"editor.fontSize": 14,
 				"terminal.integrated.defaultProfile.windows": "Git Bash",
 				"window.restoreWindows": "preserve",
 				"workbench.editorAssociations": {

@@ -9,3 +9,4 @@ graphviz
 pydot-ng
 pillow
 pydotplus
+ipykernel
