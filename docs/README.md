@@ -1,6 +1,6 @@
 # 2025SE-Crawford.L-HSCTask2
 
-This will be used to predict the weather at Sydney Airport (YSSY).
+This will be used to predict the weather at Sydney Airport ([YSSY](https://en.wikipedia.org/wiki/Sydney_Airport)).
 
 ## Description
 
@@ -56,15 +56,9 @@ command to run if program contains helper info
 
 ## Version History
 
--   0.2
-    -   Various bug fixes and optimizations
-    -   See [commit change]() or See [release history]() or see [branch]()
--   0.1
-    -   Initial Release
-
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the GNU GPLv3 License - see the [LICENSE](./LICENSE) file for details
 
 ## Acknowledgments
 
