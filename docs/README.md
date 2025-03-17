@@ -58,7 +58,7 @@ command to run if program contains helper info
 
 ## License
 
-This project is licensed under the GNU GPLv3 License - see the LICENSE file for details
+This project is licensed under the GNU GPLv3 License - see the [LICENSE](./LICENSE) file for details
 
 ## Acknowledgments
 
