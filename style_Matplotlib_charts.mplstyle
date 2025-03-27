@@ -1,5 +1,5 @@
 # see https://matplotlib.org/stable/tutorials/introductory/customizing.html
-lines.linewidth: 4
+lines.linewidth: 2
 lines.solid_capstyle: butt
 
 legend.fancybox: true
