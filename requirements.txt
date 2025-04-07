@@ -10,3 +10,4 @@ pydot-ng
 pillow
 pydotplus
 ipykernel
+metpy
