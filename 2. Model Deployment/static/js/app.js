@@ -1,109 +1,80 @@
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("static/js/serviceWorker.js")
-      .then((res) => console.log("service worker registered"))
-      .catch((err) => console.log("service worker not registered", err));
-  });
+	window.addEventListener("load", function () {
+		navigator.serviceWorker
+			.register("/static/js/serviceWorker.js")
+			.then((res) => console.log("service worker registered"))
+			.catch((err) => console.log("service worker not registered", err));
+	});
+}
+
+// Function to enable dark mode
+function enableDarkMode() {
+	document.body.classList.add("dark-mode");
+	localStorage.setItem("darkMode", "enabled");
+	console.log("Dark mode enabled");
+}
+
+// Function to disable dark mode
+function disableDarkMode() {
+	document.body.classList.remove("dark-mode");
+	localStorage.setItem("darkMode", "disabled");
+	console.log("Dark mode disabled");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-link");
-  const currentUrl = window.location.pathname;
+	const darkModeSwitch = document.getElementById("darkModeSwitch");
+	if (darkModeSwitch) {
+		// Check if dark mode is enabled in local storage
+		if (localStorage.getItem("darkMode") === "enabled") {
+			document.body.classList.add("dark-mode");
+			darkModeSwitch.checked = true;
+		}
 
-  navLinks.forEach((link) => {
-    const linkUrl = link.getAttribute("href");
-    if (linkUrl === currentUrl) {
-      link.classList.add("active");
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.classList.remove("active");
-      link.removeAttribute("aria-current");
-    }
-  });
+		darkModeSwitch.addEventListener("change", function (event) {
+			if (event.target.checked) {
+				enableDarkMode();
+			} else {
+				disableDarkMode();
+			}
+		});
+	}
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("search-form");
-  const input = document.getElementById("search-input");
+document.addEventListener('DOMContentLoaded', function () {
+	const form = document.querySelector('#registerForm');
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+		const formData = new FormData(form);
+		formData.append('csrf_token', csrfToken);
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const searchTerm = input.value.trim().toLowerCase();
-    if (searchTerm) {
-      highlightText(searchTerm);
-    }
-  });
-
-  function highlightText(searchTerm) {
-    const mainContent = document.querySelector("main");
-    removeHighlights(mainContent);
-    highlightTextNodes(mainContent, searchTerm);
-  }
-
-  function removeHighlights(element) {
-    const highlightedElements = element.querySelectorAll("span.highlight");
-    highlightedElements.forEach((el) => {
-      el.replaceWith(el.textContent);
-    });
-  }
-
-  function highlightTextNodes(element, searchTerm) {
-    const regex = new RegExp(`(${searchTerm})`, "gi");
-    const walker = document.createTreeWalker(
-      element,
-      NodeFilter.SHOW_TEXT,
-      null,
-      false
-    );
-    let node;
-    while ((node = walker.nextNode())) {
-      const parent = node.parentNode;
-      if (
-        parent &&
-        parent.nodeName !== "SCRIPT" &&
-        parent.nodeName !== "STYLE"
-      ) {
-        const text = node.nodeValue;
-        const highlightedText = text.replace(
-          regex,
-          '<span class="highlight">$1</span>'
-        );
-        if (highlightedText !== text) {
-          const tempDiv = document.createElement("div");
-          tempDiv.innerHTML = highlightedText;
-          while (tempDiv.firstChild) {
-            parent.insertBefore(tempDiv.firstChild, node);
-          }
-          parent.removeChild(node);
-        }
-      }
-    }
-  }
+		fetch('/register', {
+			method: 'POST',
+			body: formData,
+			headers: {
+				'X-CSRFToken': csrfToken
+			}
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	});
 });
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   if (window.location.pathname === "/") {
-//     const buttons = [
-//       { id: "all", url: "/" },
-//       { id: "python", url: "?lang=python" },
-//       { id: "cpp", url: "?lang=cpp" },
-//       { id: "bash", url: "?lang=bash" },
-//       { id: "sql", url: "?lang=sql" },
-//       { id: "html", url: "?lang=html" },
-//       { id: "css", url: "?lang=css" },
-//       { id: "js", url: "?lang=javascript" },
-//       { id: "other", url: "?lang=other" },
-//       { id: "unknown", url: "?lang=unknown" }
-//     ];
-
-//     buttons.forEach((button) => {
-//       const element = document.getElementById(button.id);
-//       if (element) {
-//         element.addEventListener("click", function () {
-//           window.location.href = button.url;
-//         });
-//       }
-//     });
-//   }
-// });
+document.addEventListener('DOMContentLoaded', (event) => {
+	const diaryTimeInput = document.querySelector('input[name="diary_time"]');
+	if (diaryTimeInput) {
+		const now = new Date();
+		const year = now.getFullYear();
+		const month = String(now.getMonth() + 1).padStart(2, '0');
+		const day = String(now.getDate()).padStart(2, '0');
+		const hours = String(now.getHours()).padStart(2, '0');
+		const minutes = String(now.getMinutes()).padStart(2, '0');
+		const localDatetime = `${year}-${month}-${day}T${hours}:${minutes}`;
+		diaryTimeInput.value = localDatetime;
+	}
+});

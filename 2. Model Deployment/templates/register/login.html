@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+	<div class="card p-3">
+		<h3 class="text-center">Login</h3>
+		<form id="loginForm" method="POST" action="/login" enctype="application/x-www-form-urlencoded">
+			{{ form.hidden_tag() }}
+			<div class="mb-3">
+				<label for="username" class="form-label">Username</label>
+				{{ form.username(class="form-control") }}
+			</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">Password</label>
+				{{ form.password(class="form-control") }}
+			</div>
+			<div class="mb-3">
+				<label for="otp" class="form-label">One-Time Password (OTP)</label>
+				<input type="text" name="otp" id="otp" class="form-control" required>
+			</div>
+			{{ form.submit(class="btn btn-primary") }}
+		</form>
+	</div>
+</div>
+{% endblock %}
