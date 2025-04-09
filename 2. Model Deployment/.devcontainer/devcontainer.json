@@ -1,0 +1,58 @@
+{
+  "name": "Python Flask Development Container",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "apt-get update && apt-get install -y python3 python3-pip",
+  "postAttachCommand": {},
+  "portsAttributes": {
+    "5000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "editor.fontSize": 18,
+        "terminal.integrated.defaultProfile.windows": "Git Bash",
+        "window.restoreWindows": "preserve",
+        "workbench.editorAssociations": {
+          "*.md": "vscode.markdown.preview.editor"
+        }
+      },
+      "extensions": [
+        "McCarter.start-git-bash",
+        "medo64.render-crlf",
+        "ecmel.vscode-html-css",
+        "ms-vscode.js-debug",
+        "dbaeumer.vscode-eslint",
+        "miramac.vscode-exec-node",
+        "yy0931.vscode-sqlite3-editor",
+        "oderwat.indent-rainbow",
+        "ritwickdey.LiveServer",
+        "tomoki1207.pdf",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-wsl",
+        "GitHub.codespaces",
+        "ms-vscode-remote.remote-wsl",
+        "ms-azuretools.vscode-docker",
+        "rangav.vscode-thunder-client",
+        "esbenp.prettier-vscode",
+        "ms-python.black-formatter",
+        "ms-python.python"
+      ]
+    }
+  },
+  "forwardPorts": [5000, 3000]
+}

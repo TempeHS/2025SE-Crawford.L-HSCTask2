@@ -1,0 +1,51 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container py-4"">
+    <div class=" p-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-2">
+        <h1 class="display-4">VS Code Extensions for Software Engineering</h1>
+        <p class="lead">
+            This is a collection of Visual Studio Code extensions that are useful
+            for software engineering.
+        </p>
+    </div>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="btn-group" role="group" aria-label="Filter by language">
+            <button type="button" class="btn btn-primary" id="all">All</button>
+            <button type="button" class="btn btn-primary" id="python">Python</button>
+            <button type="button" class="btn btn-primary" id="cpp">C++</button>
+            <button type="button" class="btn btn-primary" id="bash">Bash</button>
+            <button type="button" class="btn btn-primary" id="sql">SQL</button>
+            <button type="button" class="btn btn-primary" id="html">HTML</button>
+            <button type="button" class="btn btn-primary" id="css">CSS</button>
+            <button type="button" class="btn btn-primary" id="js">JavaScript</button>
+            <button type="button" class="btn btn-primary" id="other">Other</button>
+            <button type="button" class="btn btn-primary" id="unknown">Unknown</button> <!-- New button -->
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <div class="error">
+            <h2 class="text-danger">{{ data.error }}</h2>
+        </div>
+        {% if data.error is not defined %}
+        {% for row in data %}
+        <div class="col-sm-12 col-lg-4">
+            <div class="card">
+                <img src="{{ row.image }}" class="card-img-top"
+                    alt="Product image for the {{ row.name }} VSCode extension." />
+                <div class="card-body">
+                    <h5 class="card-title">{{ row.name }}</h5>
+                    <p class="card-text">{{ row.about }}</p>
+                    <a href="{{ row.hyperlink }}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
