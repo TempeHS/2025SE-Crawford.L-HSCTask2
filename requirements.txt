@@ -11,3 +11,4 @@ pillow
 pydotplus
 ipykernel
 metpy
+seaborn

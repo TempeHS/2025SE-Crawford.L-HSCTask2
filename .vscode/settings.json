@@ -1,4 +1,8 @@
 {
 	"notebook.output.scrolling": true,
-	"notebook.output.textLineLimit": 20
+	"notebook.output.textLineLimit": 20,
+	"python.analysis.usePullDiagnostics": true,
+	"python.autoComplete.extraPaths": [
+		"/usr/local/lib/python3.12/site-packages"
+	]
 }
