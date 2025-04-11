@@ -6,7 +6,7 @@
 		"cpus": 4
 	},
 	"waitFor": "onCreateCommand",
-	"updateContentCommand": "pip install --upgrade pip && pip install -r requirements.txt --upgrade", // ensure that packages are installed
+	"updateContentCommand": "python -m pip install --upgrade pip && python -m pip install -r requirements.txt --upgrade", // ensure that packages are installed
 	"postCreateCommand": "apt-get update && apt-get install -y python3 python3-pip",
 	"postAttachCommand": {},
 	"portsAttributes": {
@@ -72,7 +72,9 @@
 				"ms-toolsai.datawrangler",
 				"ms-python.vscode-python-envs",
 				"yy0931.mplstyle",
-				"vincent-templier.vscode-netron"
+				"vincent-templier.vscode-netron",
+				"iliazeus.vscode-ansi",
+				"ms-vscode.notepadplusplus-keybindings"
 			]
 		}
 	},

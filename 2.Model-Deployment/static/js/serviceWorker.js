@@ -10,9 +10,6 @@ const assets = [
 	"/templates/index.html",
 	"/templates/layout.html",
 	"/templates/partials/navbar.html",
-	"/templates/partials/register.html",
-	"/templates/partials/login.html",
-	"/templates/login_success.html",
     /* add other files that are loaded here (both code files and images) */,
 ],
 	CATALOGUE_ASSETS = "catalogue-assets";
