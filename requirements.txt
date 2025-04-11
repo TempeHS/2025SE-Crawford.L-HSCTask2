@@ -12,3 +12,13 @@ pydotplus
 ipykernel
 metpy
 seaborn
+Flask
+flask_wtf
+flask-csp
+jsonschema
+requests
+flask_cors
+flask_limiter
+flask-talisman
+pylint
+python-dotenv

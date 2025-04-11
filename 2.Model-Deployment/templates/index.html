@@ -1,0 +1,68 @@
+{% extends 'layout.html' %} {% block content %}
+<h1>Main Page</h1>
+<p>Welcome to the Machine Learning Model Deployment project!</p>
+<p><span class="text-danger">*</span>: Indicates required fields.</p>
+
+
+<!-- Main container for the form layout -->
+<div class="container-fluid">
+	<form id="predictionForm">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label for="air_temp" class="form-label mb-2">Temperature:<span class="text-danger">*</span></label>
+					<small class="form-text text-muted">(Enter the temperature in Celsius, e.g., 25.5)</small>
+					<input class="form-control" id="air_temp" name="air_temp" placeholder="Insert temperature here"
+						type="number" required />
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label for="dewpt" class="form-label">Dew Point:<span class="text-danger">*</span></label>
+					<small class="form-text text-muted">(Enter the dew point in Celsius, e.g., 15.0)</small>
+					<input class="form-control" id="dewpt" name="dewpt" placeholder="Insert dewpoint here" type="number"
+						required />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label for="rel_hum" class="form-label">Relative Humidity:<span class="text-danger">*</span></label>
+					<small class="form-text text-muted">(Enter a number between 0 and 100 without the percentage sign,
+						e.g., 75)</small>
+					<input class="form-control" id="rel_hum" name="rel_hum" placeholder="Insert humidity here"
+						type="number" min="0" max="100" required />
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label for="press" class="form-label">Pressure:<span class="text-danger">*</span></label>
+					<small class="form-text text-muted">(Enter the pressure in hPa, e.g., 1013)</small>
+					<input class="form-control" id="press" name="press" placeholder="Insert pressure here" type="number"
+						required />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label for="apparent_t" class="form-label">Apparent Temp:<span class="text-danger">*</span></label>
+					<small class="form-text text-muted">(Enter the temperature in Celsius, e.g., 21.5)</small>
+					<input class="form-control" id="apparent_t" name="apparent_t"
+						placeholder="Insert apparent temperature here" type="number" required />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<button type="submit" class="btn btn-primary" title="Submit the form">Submit</button>
+		</div>
+	</form>
+	<div id="predictionResults" style="display: none;">
+		<h3>Prediction Results:</h3>
+		<p><strong>Wind Direction (°):</strong> <span id="windDir"></span></p>
+		<p><strong>Wind Speed (km/h):</strong> <span id="windSpd"></span></p>
+		<p><strong>Gust Speed (km/h):</strong> <span id="gustSpd"></span></p>
+	</div>
+</div>
+{% endblock content %}
