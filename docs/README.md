@@ -24,13 +24,23 @@ Be able to predict the weather within the next 10-30 mins to above 50% accuracy.
 time,wmo,name,history_product,air_temp,apparent_t,dewpt,rel_hum,delta_t,wind_dir_deg,wind_spd_kmh,gust_kmh,rain_trace,rain_ten,rain_hour,duration_from_9am,press,lat,lon,location
 ```
 
-| Column          | Discription                                     |
-| --------------- | ----------------------------------------------- |
-| time            | The timestamp of when the weather was recorded. |
-| wmo             | The ID of the weather station.                  |
-| name            | The human-friendly name of the weather station. |
-| history_product | The ID for BOM identification.                  |
-|                 |                                                 |
+| Column          | Description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| time            | The date and time of the observation.                                      |
+| wmo             | The ID of the weather station.                                             |
+| name            | The human-friendly name of the weather station.                            |
+| history_product | The ID for BOM identification.                                             |
+| air_temp        | The air temperature (°C) recorded at the time of observation.              |
+| dewpt           | The temperature (°C) at which air becomes saturated and dew forms.         |
+| rel_hum         | The percentage of moisture in the air relative to the maximum it can hold. |
+| wind_dir_deg    | The direction from which the wind is blowing, in degrees.                  |
+| wind_spd_kmh    | The speed of the wind (km/h) at the time of observation.                   |
+| gust_kmh        | The maximum wind speed (km/h) recorded during a short period.              |
+| press           | Atmospheric pressure (hPa) at the observation site.                        |
+| rain_trace      | The amount of precipitation (mm) recorded over a specific period.          |
+| lat             | The latitude of the observation site.                                      |
+| lon             | The longitude of the observation site.                                     |
+| location        | The specific location of the weather station.                              |
 
 ## Getting Started
 
@@ -50,23 +60,31 @@ graphviz
 pydot-ng
 pillow
 pydotplus
+ipykernel
+metpy
+seaborn
+Flask
+flask_wtf
+flask-csp
+jsonschema
+requests
+flask_cors
+flask_limiter
+flask-talisman
+pylint
+python-dotenv
 ```
-
--   ex. Windows 10
-
-### Installing
-
--   How/where to download your program
--   Any modifications needed to be made to files/folders
 
 ### Executing program
 
 -   How to run the program
--   Step-by-step bullets
 
 ```bash
-python -m pip install --upgrade pip && pip install -r "requirements.txt" --upgrade
+cd 2./Model-Deployment
+python main.py
 ```
+
+Then access at `https://127.0.0.1:5000/`.
 
 ## Help
 
@@ -79,10 +97,6 @@ command to run if program contains helper info
 ## Authors
 
 -   [@DefNotCrawf](https://github.com/DefNotCrawf)
-
-## Version History
-
-\*_TO DO_\*
 
 ## License
 
